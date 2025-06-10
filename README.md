@@ -3,7 +3,28 @@
 This project provides a playground in which I can get experience with VSCode
 extensions.
 
-## Organization
+Currently, the extension calls an LLM and outputs the result.
+
+## Use
+
+1. Install Gemma3 on Mac
+   1. Download Ollama app from https://github.com/ollama/ollama
+   2. Drag app to Applications folder
+   3. Double-click application to run installer
+   4. Install Gemma3 in Ollama: `ollama pull gemma3`
+1. Package the extension: `npm run package`
+1. Note the `.vsix` file output
+1. Install the extension
+   1. Open Command Palette
+   2. Run `Extensions: Install From VSIX...`
+1. Run the extension
+1. Open Command Palette
+1. Run `Playground: Hello World`
+1. Observe small popup with the result
+
+## Develop
+
+### Project Organization
 
 - `package.json` - this is the manifest file in which you declare your extension
   and command.
@@ -19,35 +40,64 @@ extensions.
     second parameter to `registerCommand`.
 - `src/test/` - defines unit tests
 
-## Develop
+### Set Up
 
 1. Clone this repo
-2. Open this repo in VSCode (Host Window)
-3. Open Command Palette and run `Debug: Start Debugging` to launch a new
-   "Extension Development Host Window" (Dev Window)
-4. In Dev Window, open command palette and run `Playground: Hello World`
-5. From Dev Window, run `Developer: Reload Window` or `Cmd+R` to pull in changes
-6. Set breakpoints in your code inside `src/extension.ts` to debug
-7. Find logs in the Host Window's debug console
 
-## Test
+   1. Install Ollama on Mac
+   1. Download app from https://github.com/ollama/ollama
+   1. Drag app to Applications folder
+   1. Double-click application to run installer
+   1. Verify by running `ollama --version` in a terminal
+
+1. Install Gemma in Ollama: `ollama pull gemma3`
+
+   1. Verify by curling model:
+
+      ```sh
+      curl http://localhost:11434/api/generate -d '{"model":"gemma3", "prompt":"hi"}'
+      ```
+
+### Iterate
+
+1. Open this repo in VSCode (Host Window)
+2. Open Command Palette and run `Debug: Start Debugging` to launch a new
+   "Extension Development Host Window" (Dev Window)
+3. In Dev Window, open command palette and run `Playground: Hello World`
+4. From Dev Window, run `Developer: Reload Window` or `Cmd+R` to pull in changes
+5. Set breakpoints in your code inside `src/extension.ts` to debug
+6. Find logs in the Host Window's debug console
+
+### Test
 
 Run unit tests: `npm test`.
 
-## Install
+## Release
 
 An extension must be
 [packaged](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#packaging-extensions)
 into a `.vsix` file before it can be installed.
 
 The VSCode Marketplace abstracts this, but this project isn't intended to be
-published to the Marketplace. Instead, package and install the
+published to the Marketplace. Instead, "release" the
 extension manually.
 
-1. Run `npm run package`
-2. Observe `.vsix` file output into package root
-3. In VSCode, run command `Extensions: Install From VSIX...`
-4. Verify installation by running `Playground: Hello World`
+1. Bump the version in `package.json`.
+   (VSCode only installs new versions. Alternatively, we could
+   uninstall/reinstall the package, but documenting major changes seems
+   helpful too.)
+2. Update the Releases table below
+3. Run `npm run package`
+4. Observe `.vsix` file output into package root
+5. In VSCode, run command `Extensions: Install From VSIX...`
+6. Verify installation by running `Playground: Hello World`
+
+## Releases
+
+| Version | Description                        |
+| ------- | ---------------------------------- |
+| 0.0.1   | Hello world                        |
+| 0.0.2   | Hello world with Gemma3 via Ollama |
 
 ## References
 

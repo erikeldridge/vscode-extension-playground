@@ -1,9 +1,10 @@
 {
   "private": true,
+  "repository": "github:erikeldridge/vscode-extension-playground",
   "name": "erikeldridge-vscode-extension-playground",
   "displayName": "Erik Eldridge VSCode Extension Playground",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -25,7 +26,7 @@
     "compile": "tsc -p ./",
     "test": "vscode-test",
     "lint": "eslint src",
-    "package": "vsce package --allow-missing-repository",
+    "package": "vsce package",
     "vscode:prepublish": "npm run compile"
   },
   "devDependencies": {
