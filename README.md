@@ -3,7 +3,10 @@
 This project provides a playground in which I can get experience with VSCode
 extensions.
 
-Currently, the extension calls an LLM and outputs the result.
+<img
+alt="Screencast showing the extension calling Ollama and displaying the response."
+src="https://github.com/erikeldridge/vscode-extension-playground/blob/main/demo.gif"
+width="500px"/>
 
 ## Use
 
